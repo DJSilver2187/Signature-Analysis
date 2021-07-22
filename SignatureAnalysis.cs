@@ -32,7 +32,7 @@ namespace Signature_Analysis
 				}
 				else
 					ProcessFiles(di, outPath);
-				Console.WriteLine("\nComplete");
+				Console.WriteLine("Complete");
 			}catch(Exception){}
         }
 
@@ -54,7 +54,6 @@ namespace Signature_Analysis
 				if(CheckPDF(files[i]) || CheckJPG(files[i]))
 					AddToCSV(files[i], outPath);
 			}	
-			Console.WriteLine("Processed files for " + di.ToString());
 			}catch(Exception){}
 		}
 		
@@ -76,7 +75,6 @@ namespace Signature_Analysis
 					foreach(DirectoryInfo dir in directories)
 					{
 						DirectoryInfo[] subDir = dir.GetDirectories();
-						Console.WriteLine("Got sub dirs for " + dir.ToString());
 						ProcessMultipleDirectories(subDir, outPath);
 					}
 				}
