@@ -66,10 +66,12 @@ namespace Signature_Analysis
 		///			  is consumed to continue, but the recursion is thrown off. </remarks>
 		public static void ProcessMultipleDirectories(DirectoryInfo[] directories, string outPath)
 		{
-			try
-			{
+			
 				foreach(DirectoryInfo dir in directories)
-					ProcessFiles(dir, outPath);
+				{
+					try{ProcessFiles(dir, outPath);}
+					catch(UnauthorizedAccessException){}
+				}
 				if(directories != null)
 				{
 					foreach(DirectoryInfo dir in directories)
@@ -78,7 +80,7 @@ namespace Signature_Analysis
 						ProcessMultipleDirectories(subDir, outPath);
 					}
 				}
-			}catch(UnauthorizedAccessException){}
+			
 		}
 
 		/// <summary>
